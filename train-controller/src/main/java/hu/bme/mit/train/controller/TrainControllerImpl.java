@@ -7,10 +7,11 @@ public class TrainControllerImpl implements TrainController {
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+	private boolean emergencyBreakMode = false;
 
 	@Override
 	public void followSpeed() {
-		if (referenceSpeed < 0) {
+		if (referenceSpeed < 0 || emergencyBreakMode) {
 			referenceSpeed = 0;
 		} else {
 		    if(referenceSpeed+step > 0) {
@@ -39,6 +40,16 @@ public class TrainControllerImpl implements TrainController {
 		if (referenceSpeed > speedLimit) {
 			referenceSpeed = speedLimit;
 		}
+	}
+
+	public void setEmergencyBreakMode(boolean bDoEmergencyBreak)
+	{
+		this.emergencyBreakMode = bDoEmergencyBreak;
+	}
+
+	public boolean getEmergencyBreakMode()
+	{
+		return this.emergencyBreakMode;
 	}
 
 	@Override

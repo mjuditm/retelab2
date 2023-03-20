@@ -8,4 +8,6 @@ public interface TrainUser {
 
 	void overrideJoystickPosition(int joystickPosition);
 
+	public void setEmergencyBreakMode(boolean bDoEmergencyBreak);
+
 }
